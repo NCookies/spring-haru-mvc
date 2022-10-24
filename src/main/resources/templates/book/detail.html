@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>책 상세</title>
+</head>
+<body>
+<h1>책 상세</h1>
+<p th:text="'제목 : ' + ${book.title}">제목</p>
+<p th:text="'카테고리 : ' + ${book.category}">카테고리</p>
+<p th:text="'가격 : ' + ${book.price}">0</p>
+<p th:text="'입력일 : ' + ${book.insert_date}">입력날짜</p>
+
+<p>
+  <a th:href="'/update?bookId=' + ${book.book_id}">수정</a>
+</p>
+<form method="POST" action="/delete">
+  <input type="hidden" name="bookId" th:value="${book.book_id}" />
+  <input type="submit" value="삭제" />
+</form>
+<p>
+  <a href="/list">목록으로</a>
+</p>
+</body>
+</html>

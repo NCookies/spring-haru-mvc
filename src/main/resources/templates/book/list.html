@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>책 목록</title>
+</head>
+<body>
+<h1>책 목록</h1>
+<p>
+<form>
+  <input type="text" placeholder="검색" name="keyword" th:value="${keyword}" />
+  <input type="submit" value="검색" />
+</form>
+</p>
+<table>
+  <thead>
+  <tr>
+    <td>제목</td>
+    <td>카테고리</td>
+    <td>가격</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="book : ${books}">
+    <td>
+      <a th:href="'detail?bookId=' + ${book.book_id}" th:text="${book.title}"></a>
+    </td>
+    <td th:text="${book.category}"></td>
+    <td th:text="${book.price}"></td>
+  </tr>
+  </tbody>
+</table>
+<p>
+  <a href="/create">생성</a>
+</p>
+</body>
+</html>
